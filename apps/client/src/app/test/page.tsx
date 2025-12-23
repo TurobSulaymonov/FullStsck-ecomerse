@@ -5,12 +5,32 @@ const TestPage = async () => {
     const {getToken} = await auth();
     const token = await getToken()
 
-    const res = await fetch("http://localhost:4100/test", {
+    const resProduct = await fetch("http://localhost:4100/test", {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
-    const data = await res.json()
+    const dataProduct = await resProduct.json()
+  
+      console.log("dataProduct", dataProduct)
+
+
+    const resOrder = await fetch("http://localhost:4200/test", {
+    headers: {
+    Authorization: `Bearer ${token}`
+    }
+    })
+    const dataOrder = await resOrder.json()
+    console.log("dataOrder", dataOrder)
+
+    const resPayment = await fetch("http://localhost:4300/test", {
+    headers: {
+    Authorization: `Bearer ${token}`
+    }
+    })
+    const dataPayment = await resPayment.json()
+    console.log("dataPayment", dataPayment)
+
 
   return (
     <div>page</div>
